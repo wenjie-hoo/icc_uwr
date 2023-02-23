@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 Bucket Upload</title>
+   
+</head>
+<body>
+    <form action="upload" method="post" enctype="multipart/form-data">
+        <label for="ChooseBucket">Choose the S3 Bucket:</label><br>
+        <select name= bucketname>
+            {% for x in bucketlist %}
+            <option value= "{{x}}">{{x}}</option>"
+            {% endfor %}
+        </select><br><br>
+        <label for="Selectfile">Select file to upload:</label><br>
+        <input type="file" id="file" name="file" accept=".jpg,.bmp,.png,.jpeg,.rgb,.tif"><br><br>
+        <input type="submit">
+    </form>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+</body>
+</html>
